@@ -1,0 +1,51 @@
+
+webskobar@mail.ru
+112233a
+Password: 1234qwer
+
+
+We have just setup 'rusich.hostoi.com' account.
+
+Note: If you have chosen to host your own domain you must update your nameservers to ns01.000webhost.com, ns02.000webhost.com
+You will see message 'Your website is up and running!' after visiting your domain once it will start working (usually in 24 hours after nameserver update).
+
+Visit your website: http://rusich.hostoi.com
+Access control panel at: http://members.000webhost.com/ (login with your email and password)
+
+
+*** General Account Details ***
+Domain: rusich.hostoi.com
+IP Address: 31.170.160.98
+Username: a3255352
+Password: ******
+mysql10.000webhost.com
+
+*** File Upload Details ***
+FTP Hostname: ftp.rusich.hostoi.com or 31.170.160.98
+FTP Username: a3255352
+FTP Passsword: ******
+
+Files must be uploaded to 'public_html' folder.
+If you are not using FTP, you can access web based file manager from control panel.
+
+
+*** Website Builder Details ***
+1. Go to http://builder.000webhost.com/sitebuilder.php and select your favorite website template. Use your domain and account username/password to login to interface.
+2. Once template is selected click "Install my website" and our software will upload all files to your account. Process can take upto 3 minutes, so please be patient.
+3. Once you got confirmation that website was installed go to http://rusich.hostoi.com/admin to start editing your website. Login with your account details.
+
+
+*** MySQL Details ***
+Use mysql host 'mysql10.000webhost.com' for your PHP scripts.
+MySQL databases and users can be setup from control panel.
+
+
+*** Where to get help? ***
+- Check our FAQ at: http://www.000webhost.com/faq.php
+- Browse our forum: http://www.000webhost.com/forum/
+- Submit ticket from members area
+
+Thanks again for choosing us! If you like our services, please add a link from your website to www.000webhost.com, and let your visitors to know, where to get the best free hosting :)
+
+Thank you,
+www.000webhost.com
