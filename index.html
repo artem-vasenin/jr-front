@@ -1,65 +1,119 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Главная| клуб Русич</title>
-  <link rel="stylesheet" type="text/css" href="style1.css">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Наши задачи</title>
 </head>
-<body background="logo/logo_body1.jpg">
-<!-- каркас сайта -->
-  <table border="1" align="center" width="1000" background="logo/back_pages.jpg">
-	<tr>
-	  <td colspan="3">
-  <table background="logo/logo_head.jpg" border="0" width="1002px" height="400px">
-	<tr  valign="top">
-	<!-- шапка с логотипом -->
-	  <td id="textmenu" colspan="6"><h1 align="center">Клуб РБИ "РУСИЧ"</hi></td> 
-	<!-- конец шапки -->  
-	</tr  valign="middle">
-	<tr id="textmenu" font="color:#ffffff" height="10%" align="center">
-	<!-- кнопки -->
-	  <td width="16.66%"><a id="textmenu" href="index.html">ГЛАВНАЯ</a></td>
-	  <td width="16.66%"><a id="textmenu" href="about.html">О КЛУБЕ</a></td>
-	  <td width="16.66%"><a id="textmenu" href="publ.html">СТАТЬИ</a></td>
-	  <td width="16.66%"><a id="textmenu" href="photo.html">ФОТО</a></td>
-	  <td width="16.66%"><a id="textmenu" href="video.html">ВИДЕО</a></td>
-	  <td width="16.66%"><a id="textmenu" href="contakts.html">КОНТАКТЫ</a></td>
-	<!-- конец кнопок -->  
-	</tr>
-  </table>	
-	  </td>
-	</tr>
-	<tr>
-	<!-- щека левая -->
-	  <td background="logo/left_part.jpg" width="145"></td>
-	<!-- конец щеки левой -->  
-	<!-- начало страницы -->
-	  <td align="center" width="710">
-	  <h2 id="pages" align="center">Клуб славянских боевых искусств "РУСИЧ"</h2><hr>
-	  <!--<table align="center" border="0" width="600" background="photo/mini/logo_table.jpg">
-		<tr>
-			<td><p align="center"><img src="photo/mini/1.jpg" width="500"></p></td>
-		</tr>
-	  </table> маленькая проба-->	
-	  <p align="center"><img src="photo/mini/1.jpg" height="405"width="540"></p>
-	  <p id="pages">Тверской клуб "Русич" проводит набор юношей и девушек в секцию русского рукопашного боя. В процессе занятий вы научитесь основам рукопашного боя, боя против вооруженного противника, против нескольких противников, психологии боя, прикладной медицине, основам выживания в экстремальных условиях.</p>
-	  <p id="pages">Также в клубе "Русич" проводятся семинары для желающих познакомиться с русскими традициями и русской культурой. В скором времени клуб "Русич" начнет устраивать выезды в военно-патриотические лагеря для занимающихся, в которых на практике будет проходить обучение выживанию в сложных условиях.</p>
-	   <p id="pages">Тренировки начнутся ориентировочно в середине октября. Зал для проведения занятий находится по адресу: Спортивный переулок дом 11. Заявки от желающих обучаться русскому рукопашному бою в нашем клубе принимаются до конца октября по телефону: <span style="color: #990000; font-size: 110%;">8-906-650-92-19</span><br> Тренер: <span style="color: #990000; font-size: 110%;">Починков Роман Юрьевич</span></p><br>
-	   <!-- поле для баловства -->
-	    
-	   <!-- конец поля для баловства -->
-	  </td>
-	<!-- конец страницы -->  
-	<!-- щека правая -->
-	  <td background="logo/right_part.jpg" width="145"></td>
-	<!-- конец щеки правой -->  
-	</tr>
-	<tr valign="middle">
-	<!-- подвал -->
-	  <td background="logo/logo_bottom.jpg" colspan="3" height="107" align="center"><p id="textmenu">г.Тверь 2012г</p></td>
-	<!-- конец подвала -->  
-	</tr>  
-  </table>	
-  <!-- конец каркаса сайта -->
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col col-2 header-title">Наши задачи</div>
+                <div class="col col-10 header-search">
+                    <label for="search-input" class="header-search-label">Поиск задачи</label>
+                    <input type="text" class="search-input" id="search-input" placeholder="Введите название задачи"/>
+                    <button class="search-btn" id="search-btn">
+                        <img src="img/search-icon.svg" class="search-icon" alt="icon"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <h1>Наши наполеоновские задачи по обучению</h1>
+                </div>
+            </div>
+            <div class="add-form-block">
+                <div class="row">
+                    <div class="col col-12">
+                        <h2>Добавить задачу</h2>
+                    </div>
+                </div>
+                <form action="/" class="add-form" id="add-form">
+                    <div class="row">
+                        <div class="col col-5">
+                            <div class="form-input-row">
+                                <label for="date-input" class="form-label">Дата:</label>
+                                <input name="date" type="datetime-local" class="date-input" id="date-input"/>
+                            </div>
+                            <div class="form-input-row">
+                                <label for="title-input" class="form-label">Заголовок:</label>
+                                <input name="title" type="text" class="title-input" id="title-input"/>
+                            </div>
+                        </div>
+                        <div class="col col-5">
+                            <label for="description" class="form-label">Описание:</label>
+                            <textarea
+                                    name="description"
+                                    id="description"
+                                    class="description"
+                                    placeholder="Можно не экономить количество буков..."
+                            ></textarea>
+                        </div>
+                        <div class="col col-2 form-btn-block">
+                            <button class="button button--valid" type="submit">
+                                Добавить
+                                <img src="img/add-btn-save-icon.svg" class="save-icon form-icon form-icon--active" alt="icon"/>
+                                <img src="img/add-btn-warn-icon.svg" class="warn-icon form-icon" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="task-list-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <h2>Список задач</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12">
+                            <ul class="task-list">
+                                <li class="task-list-item task-list-item--success">
+                                    <div class="row">
+                                        <div class="col col-2 task-data">11.11.2025</div>
+                                        <div class="col col-4 task-title">Какой то странный заголовок</div>
+                                        <div class="col col-5 task-desc">Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. </div>
+                                        <div class="col col-1 task-status">
+                                            <img src="img/task-pending-icon.svg" class="task-pending-icon task-icon task-icon--active" alt="icon"/>
+                                            <img src="img/task-success-icon.svg" class="task-success-icon task-icon" alt="icon"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="task-list-item task-list-item--pending">
+                                    <div class="row">
+                                        <div class="col col-2 task-data">11.11.2025</div>
+                                        <div class="col col-4 task-title">Какой то странный заголовок</div>
+                                        <div class="col col-5 task-desc">Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. Какое то длинное описание задачи. </div>
+                                        <div class="col col-1 task-status">
+                                            <img src="img/task-pending-icon.svg" class="task-pending-icon task-icon" alt="icon"/>
+                                            <img src="img/task-success-icon.svg" class="task-success-icon task-icon task-icon--active" alt="icon"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-2">Наши задачи</div>
+                <div class="col col-10">Все права защищены, за копирование будем бить по лицу</div>
+            </div>
+        </div>
+    </footer>
+<script src="js/script.js" defer></script>
 </body>
 </html>
