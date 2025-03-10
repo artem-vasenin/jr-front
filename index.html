@@ -36,16 +36,16 @@
                         <h2>Добавить задачу</h2>
                     </div>
                 </div>
-                <div class="add-form">
+                <form class="add-form" id="add-form">
                     <div class="row">
                         <div class="col col-5">
                             <div class="form-input-row">
-                                <label for="date-input" class="form-label">Дата:</label>
-                                <input name="date" type="datetime-local" class="date-input" id="date-input"/>
+                                <label for="date" class="form-label">Дата:</label>
+                                <input name="date" type="date" class="date-input" id="date" required/>
                             </div>
                             <div class="form-input-row">
-                                <label for="title-input" class="form-label">Заголовок:</label>
-                                <input name="title" type="text" class="title-input" id="title-input"/>
+                                <label for="title" class="form-label">Заголовок:</label>
+                                <input name="title" type="text" class="title-input" id="title" required/>
                             </div>
                         </div>
                         <div class="col col-5">
@@ -55,17 +55,19 @@
                                     id="description"
                                     class="description"
                                     placeholder="Можно не экономить количество буков..."
+                                    required
                             ></textarea>
                         </div>
                         <div class="col col-2 form-btn-block">
-                            <button class="button button--valid" id="submit-btn">
+                            <button class="button button--valid" type="submit">
                                 Добавить
                                 <img src="img/add-btn-save-icon.svg" class="save-icon form-icon form-icon--active" alt="icon"/>
                                 <img src="img/add-btn-warn-icon.svg" class="warn-icon form-icon" alt="icon"/>
                             </button>
+                            <div class="alert" id="alert"></div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="task-list-block">
                 <div class="container">
@@ -74,9 +76,14 @@
                             <h2>Список задач</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="list-empty">
+                        <div class="col col-12 text-center">
+                            Пока еще нет ни одной задачи... Весьма и весьма прискорбно...
+                        </div>
+                    </div>
+                    <div class="row row--hidden" id="list-filled">
                         <div class="col col-12">
-                            <ul class="task-list">
+                            <ul class="task-list" id="task-list">
                                 <li class="task-list-item task-list-item--success">
                                     <div class="row">
                                         <div class="col col-2 task-data">11.11.2025</div>

@@ -37,6 +37,10 @@ body {
         @media all and (max-width: 1280px) {
             padding: 0 10px;
         }
+
+        &.row--hidden {
+            display: none;
+        }
     }
     .col-1 { grid-column: span 1; }
     .col-2 { grid-column: span 2; }
@@ -125,9 +129,6 @@ body {
 .add-form {
     padding-bottom: 30px;
 
-    .form-input-row {
-        max-width: 100%;
-    }
     .form-label {
         display: inline-block;
         width: 100%;
@@ -151,9 +152,18 @@ body {
         border-radius: 6px;
         padding-left: 6px;
     }
+    .form-input-row {
+        max-width: 100%;
+        &.invalid {
+            label {color: red;}
+            input, textarea {border-color: red;}
+        }
+    }
     .form-btn-block {
         display: flex;
-        align-items: flex-end;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin-top: 20px;
         margin-bottom: 4px;
     }
     .button {
@@ -183,6 +193,31 @@ body {
             display: initial;
         }
     }
+    .alert {
+        display: none;
+        &.success, &.error {
+            display: block;
+            padding: 10px;
+            width: calc(100% - 20px);
+            min-height: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        &.success {
+            border: 1px solid var(--main-success-bg-btn);
+            color: var(--main-success-bg-btn);
+            &::before {
+                content: "Успех!";
+            }
+        }
+        &.error {
+            border: 1px solid var(--main-warning-bg-btn);
+            color: var(--main-warning-bg-btn);
+            &::before {
+                content: "Ошибка!";
+            }
+        }
+    }
 }
 
 .task-list {
@@ -205,23 +240,32 @@ body {
             background-color: var(--main-pending-bg-task);
         }
     }
-    .col {
-        padding-top: 16px;
+    .task-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 16px;
     }
     .task-data {
         font-weight: bold;
         text-align: center;
+        flex: 0 0 110px;
+        max-width: 110px;
+        padding-left: 12px;
+    }
+    .task-title {
+        flex: 0 0 360px;
+        max-width: 360px;
     }
     .task-desc {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        flex: 1;
     }
-    .task-icon {
-        display: none;
-        &.task-icon--active {
-            display: initial;
-        }
+    .task-status {
+        flex: 0 0 50px;
+        max-width: 50px;
     }
 }
 
@@ -232,4 +276,8 @@ body {
     display: flex;
     width: 100%;
     align-items: center;
+}
+
+.text-center {
+    text-align: center;
 }
