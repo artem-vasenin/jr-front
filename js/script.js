@@ -24,12 +24,6 @@ class Task {
         return !list ? [] : JSON.parse(list);
     }
 
-    static getTaskById(id) {
-        const list = Task.getTasks();
-        const task = list.find(task => task.id === id);
-        return task || null;
-    }
-
     static deleteTaskById(id) {
         const list = Task.getTasks().filter(task => task.id !== id);
         localStorage.setItem("tasks", JSON.stringify(list));
@@ -119,11 +113,11 @@ const createListItem = (task) => {
     return taskListItem;
 };
 
-const renderTasks = () => {
+const renderTasks = (searchList) => {
     const listEmpty = document.getElementById('list-empty');
     const listFilled = document.getElementById('list-filled');
     const taskList = document.getElementById('task-list');
-    const list = Task.getTasks();
+    const list = searchList || Task.getTasks();
     taskList.innerHTML = '';
     if (!list.length) {
         listEmpty.classList.remove('row--hidden');
@@ -155,15 +149,21 @@ function createTask(e) {
     }, 3000)
 }
 
+const searchTasks = (e) => {
+    if (!e.target.value.trim().length) {
+        renderTasks();
+        return;
+    }
+    const list = Task.getTasks().filter(i => i.title.toLowerCase().includes(e.target.value.toLowerCase()));
+    renderTasks(list);
+}
+
 window.onload = function() {
-    const searchBtn = document.getElementById("search-btn");
+    const search = document.getElementById("search-input");
     const form = document.getElementById("add-form");
 
-    renderTasks();
-
-    searchBtn.addEventListener("click", function() {
-        alert('Тут будет поиск');
-    });
-
+    search.addEventListener("input", searchTasks);
     form.addEventListener("submit", createTask);
+
+    renderTasks();
 };

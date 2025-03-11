@@ -92,19 +92,8 @@ body {
         justify-content: center;
         align-items: center;
     }
-    .search-btn {
-        height: 36px;
-        border: none;
-        background-color: var(--head-search-bg-btn);
-        border-radius: 6px;
-        font-size: 0;
-        line-height: 0;
-        cursor: pointer;
-        &:hover {
-            .search-icon {
-                opacity: 0.6;
-            }
-        }
+    .search {
+        padding-top: 2px;
     }
 }
 
