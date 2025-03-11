@@ -231,6 +231,7 @@ body {
         min-height: 70px;
         display: flex;
         align-items: center;
+        position: relative;
 
         &.task-list-item--success {
             background-color: var(--main-success-bg-task);
@@ -266,6 +267,47 @@ body {
     .task-status {
         flex: 0 0 50px;
         max-width: 50px;
+
+        .task-pending-icon, .task-success-icon {
+            transition: transform .3s ease;
+
+            &:hover {
+                cursor: pointer;
+                transform: rotate(360deg);
+                transition: transform .3s ease;
+            }
+        }
+    }
+    .task-delete {
+        position: absolute;
+        top: -10px;
+        right: -4px;
+
+        &::after {
+            content: '+';
+            display: flex;
+            width: 20px;
+            height: 20px;
+            background-color: var(--main-warning-bg-btn);
+            color: white;
+            font-size: 18px;
+            line-height: 1;
+            border: 1px solid red;
+            border-radius: 50%;
+            transform: rotate(45deg);
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        &:hover {
+            &::after {
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+                background-color: red;
+            }
+        }
     }
 }
 

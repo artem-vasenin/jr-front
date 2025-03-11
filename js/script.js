@@ -30,6 +30,26 @@ class Task {
         return task || null;
     }
 
+    static deleteTaskById(id) {
+        const list = Task.getTasks().filter(task => task.id !== id);
+        localStorage.setItem("tasks", JSON.stringify(list));
+        return list;
+    }
+
+    static editTask(task) {
+        const list = Task.getTasks().map(i => {
+            if (i.id === task.id) {
+                i.date = task.date;
+                i.title = task.title;
+                i.description = task.description;
+                i.status = task.status;
+            }
+            return i;
+        });
+        localStorage.setItem("tasks", JSON.stringify(list));
+        return list;
+    }
+
     addTask() {
         const list = Task.getTasks();
         const task = {
@@ -43,26 +63,6 @@ class Task {
         console.log('create task', task, list);
         localStorage.setItem("tasks", JSON.stringify(list));
         return task;
-    }
-
-    editTask(task) {
-        const list = Task.getTasks().map(task => {
-            if (task.id === task.id) {
-                task.date = this.date;
-                task.title = this.title;
-                task.description = this.description;
-                task.status = this.status;
-            }
-            return task;
-        });
-        localStorage.setItem("tasks", JSON.stringify(list));
-        return list;
-    }
-
-    deleteTask(id) {
-        const list = Task.getTasks().filter(task => task.id !== id);
-        localStorage.setItem("tasks", JSON.stringify(list));
-        return list;
     }
 }
 
@@ -95,15 +95,27 @@ const createListItem = (task) => {
     img.src = imgScr;
     img.alt = "Icon";
     img.classList.add(imgClass);
+    img.addEventListener("click", () => {
+        Task.editTask({...task, status: task.status === 'pending' ?  'success' : 'pending'});
+        renderTasks();
+    });
+    const del = document.createElement('div');
+    del.classList.add('task-delete');
+    del.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const answer = confirm('Удалить задачу совсем-совсем?');
+        if (answer) {
+            Task.deleteTaskById(task.id);
+            renderTasks();
+        }
+    });
     colStatus.appendChild(img);
     row.appendChild(colDate);
     row.appendChild(colTitle);
     row.appendChild(colDesc);
     row.appendChild(colStatus);
     taskListItem.appendChild(row);
-    taskListItem.addEventListener("click", () => {
-        alert("Кликнули на с ID: " + task.id);
-    });
+    taskListItem.appendChild(del);
     return taskListItem;
 };
 
