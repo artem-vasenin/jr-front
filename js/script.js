@@ -153,7 +153,10 @@ const searchTasks = (e) => {
         renderTasks();
         return;
     }
-    const list = Task.getTasks().filter(i => i.title.toLowerCase().includes(e.target.value.toLowerCase()));
+    const list = Task.getTasks()
+        .filter(i => i.title.toLowerCase().includes(e.target.value.toLowerCase())
+            || i.description.toLowerCase().includes(e.target.value.toLowerCase())
+            || i.date.toLowerCase().includes(e.target.value.toLowerCase()));
     renderTasks(list);
 }
 
