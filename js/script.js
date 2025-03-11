@@ -54,7 +54,6 @@ class Task {
             status: this.status,
         }
         list.push(task);
-        console.log('create task', task, list);
         localStorage.setItem("tasks", JSON.stringify(list));
         return task;
     }
