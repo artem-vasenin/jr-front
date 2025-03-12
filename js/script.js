@@ -94,11 +94,13 @@ const onEditTask = (e, id) => {
     e.stopPropagation();
     const task = Task.getTaskById(id);
     if (!task) return;
+    const idField = document.getElementById('edit-id');
     const date = document.getElementById('edit-date');
     const title = document.getElementById('edit-title');
     const desc = document.getElementById('edit-description');
     const status = document.getElementById('edit-status');
     const modal = document.getElementById('modal');
+    idField.value = task.id;
     date.value = Task.dateFormatReverse(task.date);
     title.value = task.title;
     desc.value = task.description;
@@ -106,8 +108,7 @@ const onEditTask = (e, id) => {
     modal.classList.add('modal--active');
 }
 
-const onCancel = (e) => {
-    e.stopPropagation();
+const onCancel = () => {
     const modal = document.getElementById('modal');
     const form = document.getElementById('edit-form');
     modal.classList.remove('modal--active');
@@ -202,6 +203,22 @@ function createTask(e) {
     }, 3000)
 }
 
+function editTask(e) {
+    e.preventDefault();
+    const taskData = {};
+    const formData = new FormData(this);
+    for (let [name, value] of formData.entries()) {
+        taskData[name] = value;
+    }
+    Task.editTask({
+        ...taskData,
+        id: +taskData.id,
+        date: Task.dateFormat(taskData.date),
+    });
+    renderTasks();
+    onCancel();
+}
+
 const searchTasks = (e) => {
     if (!e.target.value.trim().length) {
         renderTasks();
@@ -216,11 +233,13 @@ const searchTasks = (e) => {
 
 window.onload = function() {
     const search = document.getElementById("search-input");
-    const form = document.getElementById("add-form");
+    const addForm = document.getElementById("add-form");
+    const editForm = document.getElementById("edit-form");
     const cancel = document.getElementById("btn-cancel");
 
     search.addEventListener("input", searchTasks);
-    form.addEventListener("submit", createTask);
+    addForm.addEventListener("submit", createTask);
+    editForm.addEventListener("submit", editTask);
     cancel.addEventListener("click", onCancel);
 
     renderTasks();
