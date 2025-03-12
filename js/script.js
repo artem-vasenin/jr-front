@@ -19,6 +19,18 @@ class Task {
         return `${day}-${month}-${year}`;
     }
 
+    static dateFormatReverse(date) {
+        if (date.length === 10 && date.includes('-')) {
+            const list = date.split('-');
+            return list[2] + '-' + list[1] + '-' + list[0];
+        }
+        const dt = new Date();
+        const day = dt.getDay() < 10 ? '0' + dt.getDay() : dt.getDay();
+        const month = dt.getMonth() + 1 < 10 ? '0' + (dt.getMonth() + 1) : (dt.getMonth() + 1);
+        const year = dt.getFullYear();
+        return `${year}-${month}-${day}`;
+    }
+
     static getTasks() {
         const list = localStorage.getItem("tasks");
         return !list ? [] : JSON.parse(list);
@@ -28,6 +40,11 @@ class Task {
         const list = Task.getTasks().filter(task => task.id !== id);
         localStorage.setItem("tasks", JSON.stringify(list));
         return list;
+    }
+
+    static getTaskById(id) {
+        const task = Task.getTasks().find(task => task.id === id);
+        return task ? task : null;
     }
 
     static editTask(task) {
@@ -59,6 +76,44 @@ class Task {
     }
 }
 
+const onTaskRemove = (e, id) => {
+    e.stopPropagation();
+    const answer = confirm('Удалить задачу совсем-совсем?');
+    if (answer) {
+        Task.deleteTaskById(id);
+        renderTasks();
+    }
+};
+
+const onToggleTaskStatus = (task) => {
+    Task.editTask({...task, status: task.status === 'pending' ?  'success' : 'pending'});
+    renderTasks();
+}
+
+const onEditTask = (e, id) => {
+    e.stopPropagation();
+    const task = Task.getTaskById(id);
+    if (!task) return;
+    const date = document.getElementById('edit-date');
+    const title = document.getElementById('edit-title');
+    const desc = document.getElementById('edit-description');
+    const status = document.getElementById('edit-status');
+    const modal = document.getElementById('modal');
+    date.value = Task.dateFormatReverse(task.date);
+    title.value = task.title;
+    desc.value = task.description;
+    status.value = task.status;
+    modal.classList.add('modal--active');
+}
+
+const onCancel = (e) => {
+    e.stopPropagation();
+    const modal = document.getElementById('modal');
+    const form = document.getElementById('edit-form');
+    modal.classList.remove('modal--active');
+    form.reset();
+}
+
 const createListItem = (task) => {
     let imgScr = 'img/task-pending-icon.svg';
     let imgClass = 'task-pending-icon';
@@ -88,20 +143,18 @@ const createListItem = (task) => {
     img.src = imgScr;
     img.alt = "Icon";
     img.classList.add(imgClass);
-    img.addEventListener("click", () => {
-        Task.editTask({...task, status: task.status === 'pending' ?  'success' : 'pending'});
-        renderTasks();
-    });
+    img.addEventListener("click", () => onToggleTaskStatus(task));
     const del = document.createElement('div');
     del.classList.add('task-delete');
-    del.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const answer = confirm('Удалить задачу совсем-совсем?');
-        if (answer) {
-            Task.deleteTaskById(task.id);
-            renderTasks();
-        }
-    });
+    del.addEventListener("click", (e) => onTaskRemove(e, task.id));
+    const editIcon = document.createElement('img');
+    editIcon.src = 'img/edit_icon.svg';
+    editIcon.alt = "Icon";
+    editIcon.classList.add('edit-icon');
+    const edit = document.createElement('div');
+    edit.classList.add('task-edit');
+    edit.appendChild(editIcon);
+    edit.addEventListener("click", (e) => onEditTask(e, task.id));
     colStatus.appendChild(img);
     row.appendChild(colDate);
     row.appendChild(colTitle);
@@ -109,6 +162,7 @@ const createListItem = (task) => {
     row.appendChild(colStatus);
     taskListItem.appendChild(row);
     taskListItem.appendChild(del);
+    taskListItem.appendChild(edit);
     return taskListItem;
 };
 
@@ -163,9 +217,11 @@ const searchTasks = (e) => {
 window.onload = function() {
     const search = document.getElementById("search-input");
     const form = document.getElementById("add-form");
+    const cancel = document.getElementById("btn-cancel");
 
     search.addEventListener("input", searchTasks);
     form.addEventListener("submit", createTask);
+    cancel.addEventListener("click", onCancel);
 
     renderTasks();
 };

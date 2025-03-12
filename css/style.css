@@ -269,7 +269,7 @@ body {
     }
     .task-delete {
         position: absolute;
-        top: -10px;
+        top: -6px;
         right: -4px;
 
         &::after {
@@ -298,6 +298,30 @@ body {
             }
         }
     }
+    .task-edit {
+        position: absolute;
+        bottom: -6px;
+        right: -4px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--head-search-bg-btn);
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+
+        &:hover {
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            background-color: #999;
+        }
+
+        .edit-icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
 }
 
 .footer {
@@ -311,4 +335,90 @@ body {
 
 .text-center {
     text-align: center;
+}
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .3s ease;
+
+    &.modal--active {
+        z-index: 10;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: opacity .3s ease;
+    }
+
+    .edit-form {
+        display: flex;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        padding: 20px;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 6px;
+    }
+
+    h2 {
+        font-size: 16px;
+        text-align: center;
+        margin: 0;
+        padding-bottom: 20px;
+    }
+    .form-input-row {
+    }
+    .form-label {
+        display: block;
+        font-size: 14px;
+        padding-left: 6px;
+    }
+    .date-input, .title-input, .description, .status-select {
+        width: calc(100% - 6px);
+        height: 34px;
+        border: 1px solid var(--head-search-bg-btn);
+        border-radius: 6px;
+        padding-left: 6px;
+        margin-bottom: 16px;
+    }
+    .description {
+        height: 104px;
+    }
+    .status-select {
+        width: 100%;
+    }
+    .form-actions-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .button {
+        width: 140px;
+        height: 40px;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: bold;
+
+        &.button--save {
+            background-color: var(--main-success-bg-btn);
+        }
+        &.button--cancel {
+            color: #999;
+        }
+    }
 }

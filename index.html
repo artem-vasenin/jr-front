@@ -104,7 +104,40 @@
         </div>
     </footer>
     <div class="modal" id="modal">
-
+        <form class="edit-form" id="edit-form">
+            <h2>Редактировать задачу</h2>
+            <div class="form-input-row">
+                <label for="edit-date" class="form-label">Дата:</label>
+                <input name="date" type="date" class="date-input" id="edit-date" required/>
+            </div>
+            <div class="form-input-row">
+                <label for="edit-title" class="form-label">Заголовок:</label>
+                <input name="title" type="text" class="title-input" id="edit-title" required/>
+            </div>
+            <div class="form-input-row">
+                <label for="edit-description" class="form-label">Описание:</label>
+                <textarea
+                        name="description"
+                        id="edit-description"
+                        class="description"
+                        placeholder="Можно не экономить количество буков..."
+                        required
+                ></textarea>
+            </div>
+            <div class="form-input-row">
+                <label for="edit-status" class="form-label">Статус:</label>
+                <select name="status" class="status-select" id="edit-status">
+                    <option value="pending">В процессе</option>
+                    <option value="success">Завершена</option>
+                </select>
+            </div>
+            <div class="form-actions-row">
+                <button class="button button--save" type="submit">
+                    Сохранить <img src="img/add-btn-save-icon.svg" class="save-icon form-icon" alt="icon"/>
+                </button>
+                <button class="button button--cancel" id="btn-cancel">Отменить</button>
+            </div>
+        </form>
     </div>
 <script src="js/script.js" defer></script>
 </body>
